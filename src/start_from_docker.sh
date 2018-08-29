@@ -4,7 +4,7 @@
 set -e 
 
 echo "Activating conda env..."
-source "$(which activate)" py36
+conda activate py36
 
 # copy everything from staging
 mkdir /opt/prod
