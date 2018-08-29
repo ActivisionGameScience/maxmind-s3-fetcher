@@ -10,8 +10,7 @@ RUN wget -O miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-latest-L
     rm miniconda.sh
 
 # put the root env on the path
-#ENV PATH /opt/anaconda/bin:$PATH
-RUN source /opt/anaconda/etc/profile.d/conda.sh
+ENV PATH /opt/anaconda/bin:$PATH
 
 # create the condarc
 RUN echo "channels:\n  - defaults" > /root/.condarc#

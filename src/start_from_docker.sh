@@ -5,7 +5,7 @@ set -e
 
 echo "Activating conda env..."
 source /opt/anaconda/etc/profile.d/conda.sh
-conda activate py36
+source /opt/anaconda/bin/activate py36
 
 # copy everything from staging
 mkdir /opt/prod
