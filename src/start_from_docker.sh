@@ -5,7 +5,7 @@ set -e
 
 echo "Activating conda env..."
 source /opt/anaconda/etc/profile.d/conda.sh
-source /opt/anaconda/bin/activate py36
+conda activate py36
 
 # copy everything from staging
 mkdir /opt/prod
@@ -16,16 +16,16 @@ if [ -n "$MAXMIND_LICENSE_KEY" ]; then
     ARGS="--maxmind_license_key $MAXMIND_LICENSE_KEY"
 fi
 
-if [ -n "$S3_BUCKET" ]; then
-    ARGS="$ARGS"" --s3_bucket $S3_BUCKET"
+if [ -n "$MAXMIND_S3_BUCKET" ]; then
+    ARGS="$ARGS"" --s3_bucket $MAXMIND_S3_BUCKET"
 fi
 
-if [ -n "$AWS_ACCESS_KEY_ID" ]; then
-    ARGS="$ARGS"" --aws_access_key_id $AWS_ACCESS_KEY_ID"
+if [ -n "$MAXMIND_AWS_ACCESS_KEY_ID" ]; then
+    ARGS="$ARGS"" --aws_access_key_id $MAXMIND_AWS_ACCESS_KEY_ID"
 fi
 
-if [ -n "$AWS_SECRET_ACCESS_KEY" ]; then
-    ARGS="$ARGS"" --aws_secret_access_key $AWS_SECRET_ACCESS_KEY"
+if [ -n "$MAXMIND_AWS_SECRET_ACCESS_KEY" ]; then
+    ARGS="$ARGS"" --aws_secret_access_key $MAXMIND_AWS_SECRET_ACCESS_KEY"
 fi
 
 echo "Syncing..."
