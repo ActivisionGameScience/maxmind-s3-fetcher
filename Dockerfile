@@ -7,8 +7,11 @@ RUN apt-get update && apt-get -y install wget bzip2 ca-certificates
 # grab miniconda, setup root env in /opt/anaconda, and call out to docker-build.sh to build the rest
 RUN wget -O miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
     /bin/sh miniconda.sh -b -p /opt/anaconda && \
-    rm miniconda.sh && \
-    /bin/bash docker-build.sh
+    rm miniconda.sh
+
+COPY docker-build.sh /
+RUN /bin/bash /docker-build.sh && \
+    rm /docker-build.sh
 
 # copy to /opt
 COPY src /opt/staging
